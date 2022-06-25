@@ -1,6 +1,6 @@
 from pyexpat import model
 from attr import fields
-from django.views.generic.edit import Createview
+from django.views.generic.edit import (Createview, DetailView, UpdateView, DeleteView)
 from .models import Post
 
 class blogAppCreateView(Createview):
@@ -8,15 +8,17 @@ class blogAppCreateView(Createview):
     fields = "__all__"
     success_url = reverse_lazy("blog:all")
 
-class blogAppDetailview(Createview):
-    model = Post
-
-class blogAppUpdateview(Createview):
+class blogAppDetailsview(DetailView):
     model = Post
     fields = "__all__"
     success_url  = reverse_lazy("blog:all")
 
-class blogAppDeleteview(Createview):
+class blogAppUpdateview(UpdateView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy("blog:all")
+
+class blogAppDeleteview(DeleteView):
     model = Post
     fields = "__all__"
     success_url  = reverse_lazy("blog:all")
